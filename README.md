@@ -16,9 +16,3 @@
 - front : HTML5, CSS3, Javascript, JSP, JQuery/Ajax
 - batabase : MariaDB
 - 개발 툴 : Eclipse(eGovFramework), HeidiSQL, Exerd ERD
-
-##기능
----
-1. 로그인
-Uploading 두두캘린더 로그인.mp4…
-
