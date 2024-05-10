@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="adminCalendarDAO">
+	
+	<!-- 전체 프로젝트 목록 -->
+	<select id="selectProjectList" parameterType="comDefaultVO" resultType="egovMap">
+		select * from project
+	</select>
+	
+	<!-- 달력에 전체 사원 일정 표시 -->
+	<select id="selectDuduWorkList" parameterType="comDefaultVO" resultType="egovMap">
+		select * from schdul
+	</select>
+	
+	<!-- 사원 일정 상세보기 -->
+	<select id="selectSchdulDetail" resultType="EgovMap">
+		SELECT * FROM SCHDUL
+		WHERE SCHDUL_ID = #{schdulId}
+		LIMIT 1
+	</select>
+	
+	<!-- 사원 일정 목록보기 -->
+	<select id="selectSchdulList" parameterType="comDefaultVO" resultType="egovMap">
+		SELECT
+	    	SCHDUL_ID,
+	        SCHDUL_NM,
+	        SCHDUL_CN,
+	        PROJECT_ID,
+	        SCHDUL_CHARGER_ID,
+	        SCHDUL_CHARGER_NAME,
+	        SCHDUL_DEPT_ID,
+	        PROJECT_ID,
+	        SCHDUL_BGNDE,
+	        SCHDUL_ENDDE
+	    FROM schdul
+	    WHERE SCHDUL_BGNDE = #{schdulBgnde}
+	    ORDER BY FRST_REGIST_PNTTM DESC
+	</select>
+	
+	<!-- 프로젝트 상세보기 -->
+	<select id="selectProjectDetail" resultType="EgovMap">
+		SELECT 
+		    PROJECT_ID,
+		    PROJECT_NM,
+		    PROJECT_DEPT_NAME,
+		    PROJECT_BGNDE,
+		    PROJECT_ENDDE,
+		    PROJECT_PER,
+		    PROJECT_CN
+		FROM PROJECT
+		WHERE PROJECT_ID = #{projectId}
+		LIMIT 1
+	</select>
+	
+	<!-- 프로젝트 삭제 -->
+	<delete id="deleteProjectAct">
+		DELETE FROM PROJECT
+		WHERE PROJECT_ID = #{projectId}
+	</delete>
+	
+</mapper>
+

@@ -1,0 +1,163 @@
+@charset "UTF-8";
+
+.add-user-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-user-box {
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+    height: 700px;
+    border: 1px solid black;
+    border-radius: 14px;
+}
+
+.add-user-header {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    background-color: #053B75;
+    color: white;
+    border-radius: 13px 13px 0 0;
+    font-size: 25px;
+    font-weight: bold;
+    padding-left: 50px;
+}
+.add-user-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-top: 40px;
+}
+
+.user-team {
+    width: 1100px;
+    border: 1px solid black;
+    padding-left: 10px;
+    box-sizing: border-box;
+    height: 50px;
+}
+
+.user-data {
+    width: 1100px;
+    height: 50px;
+    border: 1px solid black;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+
+.add-user-btn {
+    margin-top: 130px;
+    width: 304px;
+    height: 60px;
+    background-color: #053B75;
+    color: white;
+    font-size: 16px;
+    border-radius: 14px;
+    cursor: pointer;
+}
+
+.wTableFrm {
+    margin-left: 20%;
+    border: 1px solid #000;
+    width: 1200px !important;
+    height: 700px !important;
+    padding-top: 0px !important;
+    margin-top: 50px;
+    border-radius: 25px;
+}
+.wTablePro{
+	margin-left: 20%;
+    border: 1px solid #000;
+    width: 1200px !important;
+    height: 900px !important;
+    padding-top: 0px !important;
+    margin-top: 50px;
+    border-radius: 25px;
+}
+.wTableHead{
+	width: 100%;
+	height: 80px;
+	display: flex;
+	align-items: center;
+	background-color: #053B75;
+	color: #fff;
+	font-size: 25px;
+	font-weight: bold;
+	border-radius: 25px 25px 0 0;
+	margin-bottom: 10px;
+}
+.wTable{
+	padding-top: 40px;
+	border-collapse: separate;
+   	border-spacing: 40px 20px;
+}
+.wTbody{
+	padding: 40px !important;
+}
+.wTable > tbody > tr > td.left{
+	width: 1100px !important;
+	height: 50px !important;
+	border: 1px solid #000;
+	padding-left: 10px !important;
+	box-sizing: border-box;
+	margin: 20px;
+}
+/* input[type="text"], input[type="password"]{
+	border: none !important;
+} */
+.txaIpUmt{
+	border: none !important;
+	background-color: #fff !important;
+}
+.btn_s2{
+	background-color: #053B75 !important;
+}
+.btn_s2:hover{
+	background-color: #6066868 !important;
+}
+.regBtn{
+	margin-right: 42%;
+	margin-top: 50px !important;
+}
+.proRegBtn{
+	margin-right: 48%;
+	margin-top: 80px !important;
+}
+.detailBtn{
+	margin-right: 25%;
+	margin-top: 100px !important;
+}
+
+.btn input.s_submit{
+    width: 200px;
+    height: 60px !important;
+    background-color: #053B75 !important;
+    font-size: 16px !important;
+    border-radius: 14px;
+    cursor: pointer !important;
+}
+span.btn_s{
+	background-color: #fff !important;
+}
+#mainBtn{
+	display: inline-block;
+	width: 200px;
+    height: 60px !important;
+    background-color: #053B75 !important;
+    font-size: 16px !important;
+    border-radius: 14px;
+    cursor: pointer !important;
+    line-height: 60px !important;
+}
+.inputText{
+	color: #000 !important;
+	font-size: 16px;
+	font-weight: bold;
+}

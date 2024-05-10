@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="manageDAO">
+
+	<resultMap id="stplatMap" type="egovframework.com.uss.umt.service.StplatVO">
+        <result property="useStplatId" column="USE_STPLAT_ID"/>
+        <result property="useStplatCn" column="USE_STPLAT_CN"/>
+        <result property="infoProvdAgeCn" column="INFO_PROVD_AGRE_CN"/>
+    </resultMap>
+    
+    <!-- 연구원 목록 -->
+    <select id="selectMbManagement" resultType="egovMap">
+    	SELECT * FROM user_tbl WHERE OFCPS_NUM = '2'
+    </select>
+    
+</mapper>

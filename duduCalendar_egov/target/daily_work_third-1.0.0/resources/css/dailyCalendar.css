@@ -1,0 +1,324 @@
+@charset "UTF-8";
+
+body{
+	margin: 0px;
+}
+.header{
+	width: 100%;
+	height: 80px;
+	border-bottom: 1px solid #C3CBCB;
+	position: relative;
+}
+
+.logo{
+	width: 300px;
+	height: 70px;
+	text-align: center;
+	display: inline-block;
+}
+.logo img{
+	margin-top: 10px;
+}
+
+.date_view{
+	display: inline-block;
+	width: 250px;
+	position: absolute;
+	top: 30px;
+	left: 350px;
+}
+.dateBtn {
+    margin: 0;
+    padding: 0;
+	height: 30px;
+	border-radius: 5px;
+	border: 1px solid #c3cbcb;
+	display: inline-block;
+}
+.datePrev, .dateNext{
+	display: inline-block;
+	width: 32px;
+	height: 30px;
+	border-right: 1px solid #c3cbcb;
+}
+.datePrev a, .dateNext a{
+	display: inline-block;
+	width: 32px;
+	text-align: center;
+	line-height: 30px;
+}
+.datePrev{
+	border-radius: 5px 0px 0px 5px;
+}
+.dateToday{
+	display: inline-block;
+	border-radius: 0px 5px 5px 0px;
+}
+.today{
+	width: 56px;
+	display: inline-block;
+	text-align: center;
+	line-height: 30px;
+	color: #000 !important;
+}
+.today:hover{
+	color: #000 !important;
+}
+
+.dateYM{
+	display: inline-block;
+	margin-left: 10px;
+	font-size: 18px;
+}
+
+.nav{
+	position: absolute;
+	right: 20px;
+	top: 20px;
+}
+.leftNav, .rightNav{
+	display: inline-block;
+	width: 100px;
+	background-color: #3579C2;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 35px;
+}
+.leftNav:hover, .rightNav:hover{
+	background-color: #053B75;
+}
+.leftNav a, .rightNav a{
+	text-decoration: none;
+	color: #fff !important;
+	font-size: 16px !important;
+}
+
+.leftContent{
+	width: 14.9%;
+	height: 91vh;
+	float: left;
+	border-right: 1px solid #C3CBCB;
+}
+.registBtn{
+	width: 210px;
+	margin: 20px auto;
+	border: 1px solid #C3CBCB;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 40px;
+}
+.registBtn:hover{
+	cursor: pointer;
+	background-color: rgba(195, 203, 203, 0.3);
+}
+.projectLine{
+	border-top: 1px solid #c3cbcb;
+}
+
+.projectList{
+	margin: 25px 20px;
+}
+.projectList:hover{
+	cursor: pointer;
+}
+.ListBox{
+	position: relative;
+	border-bottom: 1px solid #c3cbcb;
+	padding-bottom: 10px;
+}
+.listIcon{
+	margin-left: 10px;
+	width: 20px;
+	height: 20px;
+}
+.ListBtn{
+	font-size: 20px;
+	margin: 0px 0px 5px 10px;
+}
+.nextIcon{
+	position: absolute;
+	right: 5px;
+	bottom: 17px;
+}
+
+.listContent{
+	margin-top: 10px;
+}
+.listColor{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	border-radius: 2px;
+	margin: 15px 0px 0px 10px;
+}
+.projectNm{
+	margin-top: 15px;
+}
+.projectPer{
+	display: block;
+	margin: 3px 0px 0px 20px;
+}
+
+.calendar{
+	width: 85%;
+	height: 91vh;
+	float: right;
+}
+
+/* 달력 */
+.month{
+	width: 100%;
+}
+table, td, th {
+  border-right: 1px solid rgba(195, 203, 203, 0.3);
+  border-bottom: 1px solid rgba(195, 203, 203, 0.3);
+  border-collapse : collapse;
+}
+table{
+	border: none !important;
+}
+table>thead>tr>th{
+	border-bottom: none !important;
+}
+
+/* 모달 스타일 */
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  overflow: auto;
+}
+
+/* 모달 내용 스타일 */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 0px 20px 20px;
+  border: 1px solid #888;
+  width: 450px;
+  height: 500px;
+  border-radius: 5px;
+  border: 1px solid rgba(195, 203, 203, 0.5);
+}
+
+/* 모달 닫기 버튼 스타일 */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover{
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modalInput{
+	width: 440px;
+	height: 35px;
+	border: none;
+	border-bottom: 1px solid #C3CBCB !important;
+	margin-bottom: 10px;
+}
+.modalInput:focus{
+	outline: none;
+}
+.modalConInput{
+	width: 440px;
+	height: 265px;
+	border: 1px solid #c3cbcb !important;
+	border-radius: 5px;
+}
+.modalConInput:focus{
+	outline: none;
+}
+.modalDateInput{
+	width: 183px;
+	height: 35px;
+	border: none;
+	border-bottom: 1px solid #c3cbcb !important;
+	margin-bottom: 10px;
+}
+.modalDateInput:focus{
+	outline: none;
+}
+.modalSelcet{
+	width: 440px;
+	height: 35px;
+	margin-bottom: 10px;
+	border: none;
+	border-bottom: 1px solid #c3cbcb !important;
+}
+.modalSelcet:focus{
+	outline: none;
+}
+
+.modalSubmit{
+	width: 75px;
+	background-color: #053B75;
+	color: #fff;
+	text-align: center;
+	line-height: 35px;
+	border: none;
+	border-radius: 10px;
+	float: right;
+	margin: 20px 0px 0 0;
+}
+.barDetail{
+	margin-top: 95px;
+	cursor: pointer;
+}
+
+/* 팀원 일정 목록 보기 */
+.modalList {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0);
+    overflow: auto;
+}
+.bar-modal{
+	width: 450px;
+	height: 100vh;
+	background-color: #fff;
+	padding: 10px;
+}
+.barList{
+	width: 100%;
+	margin-top: 50px;
+}
+.barList th{
+	height: 50px;
+	border-right: none !important;
+	border-bottom: 1px solid #c3cbcb !important;
+}
+.barList td{
+	height: 40px;
+	text-align: center;
+	border-right: none !important;
+	cursor: pointer;
+}
+.workDate{
+	border: none !important;
+	font-size: 22px;
+	margin: 20px 0px 0px 30px;
+	font-weight: bold;
+}
+.workDate:focus{
+	outline: none;
+}
+
+.hidden {
+    display: none !important;
+}

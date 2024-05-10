@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="DeptSchdulManage">
+
+	<resultMap id="DeptSchdulManage" type="egovframework.dudu.calendar.project.service.DuduProjectVO">
+		<result property="projectId" column="PROJECT_ID"/>
+		<result property="projectSe" column="PROJECT_SE"/>
+		<result property="projectDeptId" column="PROJECT_DEPT_ID"/>
+		<result property="projectDeptName" column="PROJECT_DEPT_NAME"/>
+
+		<result property="projectKindCode" column="PROJECT_KND_CODE"/>
+		<result property="projectBgnde" column="PROJECT_BGNDE"/>
+		<result property="projectEndde" column="PROJECT_ENDDE"/>
+		<result property="projectNm" column="PROJECT_NM"/>
+		<result property="projectCn" column="PROJECT_CN"/>
+		<result property="projectChargerId" column="PROJECT_CHARGER_ID"/>
+		<result property="projectChargerName" column="PROJECT_CHARGER_NAME"/>
+
+		<result property="frstRegisterPnttm" column="FRST_REGIST_PNTTM"/>
+		<result property="frstRegisterId" column="FRST_REGISTER_ID"/>
+		<result property="lastUpdusrPnttm" column="LAST_UPDT_PNTTM"/>
+		<result property="lastUpdusrId" column="LAST_UPDUSR_ID"/>
+		<result property="projectPer" column="PROJECT_PER" />
+		
+		<result property="orgnztNm" column="orgnztNm" />
+	</resultMap>
+	
+	<!-- 프로젝트 등록  -->
+	<insert id="insertDeptSchdulManage" >
+	 
+		INSERT INTO PROJECT (
+			PROJECT_ID,
+			PROJECT_SE,
+			PROJECT_DEPT_ID,
+			PROJECT_KND_CODE,
+			PROJECT_BGNDE,
+			PROJECT_ENDDE,
+			PROJECT_NM,
+			PROJECT_CN,
+			PROJECT_CHARGER_ID,
+			FRST_REGIST_PNTTM,
+			FRST_REGISTER_ID,
+			LAST_UPDT_PNTTM,
+			LAST_UPDUSR_ID,
+			PROJECT_DEPT_NAME, 
+			PROJECT_PER
+		)VALUES(
+			#{projectId},
+			#{projectSe},
+			#{projectDeptId},
+			#{projectKindCode},
+			#{projectBgnde},
+			#{projectEndde},
+			#{projectNm},
+			#{projectCn},
+			#{projectChargerId},
+			sysdate(),
+			#{frstRegisterId},
+			sysdate(),
+			#{lastUpdusrId},
+			#{projectDeptName},
+			#{projectPer}
+		)
+	 
+	</insert>
+	
+	<!-- 프로젝트 월별 목록 조회 -->
+	<select id="selectDeptSchdulManageRetrieve" parameterType="java.util.Map" resultType="egovMap">
+	 <![CDATA[
+		SELECT
+			A.SCHDUL_ID,
+			A.SCHDUL_SE,
+			A.SCHDUL_DEPT_ID,
+			A.SCHDUL_KND_CODE	SCHDUL_KIND_CODE,
+			A.SCHDUL_BGNDE SCHDUL_BGNDE,
+			A.SCHDUL_ENDDE,
+			A.SCHDUL_NM,
+			A.SCHDUL_CN,
+			A.SCHDUL_IPCR_CODE,
+			A.SCHDUL_CHARGER_ID,
+			(SELECT USER_NM FROM USER_TBL WHERE ESNTL_ID = A.PROJECT_CHARGER_ID) AS SCHDUL_CHARGER_NAME,
+			A.FRST_REGIST_PNTTM,
+			A.FRST_REGISTER_ID,
+			A.LAST_UPDT_PNTTM,
+			A.LAST_UPDUSR_ID,
+			A.REPTIT_SE_CODE
+		FROM SCHDUL A
+		WHERE 1=1
+		AND A.SCHDUL_KND_CODE = '1'
+	]]>
+
+	 <if test='searchMode != null and searchMode != ""'>
+		 <if test='searchMode == "MONTH"'>
+	
+			 <if test='searchMonth != null and searchMonth != ""'>
+			 	<![CDATA[
+			 	 AND (#{searchMonth} BETWEEN SUBSTRING(A.SCHDUL_BGNDE, 1, 6)  AND SUBSTRING(A.SCHDUL_ENDDE, 1, 6) )
+			 	]]>
+			 </if>
+	
+		 </if>
+	 </if>
+
+	 <if test='searchKeyword != null and searchKeyword != ""'>
+	 	
+			<if test='searchCondition == "SCHDUL_SE"'>
+ 				AND SCHDUL_SE LIKE CONCAT ('%', #{searchKeyword},'%')
+ 			</if> 	
+
+	 </if>
+			order by A.SCHDUL_BGNDE , (1+(SUBSTRING(A.SCHDUL_ENDDE,1, 8) - SUBSTRING(A.SCHDUL_BGNDE, 1, 8))) DESC
+	</select>
+	
+	<!-- 프로젝트 목록 조회 -->
+	<select id="selectDeptSchdulManage" parameterType="comDefaultVO" resultType="egovMap">
+		SELECT
+		    A.PROJECT_ID,
+		    A.PROJECT_SE,
+		    A.PROJECT_DEPT_ID,
+		    A.PROJECT_KND_CODE AS project_KIND_CODE,
+		    A.PROJECT_BGNDE AS project_BGNDE,
+		    A.PROJECT_ENDDE,
+		    A.PROJECT_NM,
+		    A.PROJECT_CN,
+		    A.PROJECT_CHARGER_ID,
+		    A.FRST_REGIST_PNTTM,
+		    A.FRST_REGISTER_ID,
+		    A.LAST_UPDT_PNTTM,
+		    A.LAST_UPDUSR_ID,
+		    A.REPTIT_SE_CODE,
+		    A.PROJECT_DEPT_NAME,
+		    A.PROJECT_PER
+		FROM 
+		    PROJECT A
+		WHERE
+			A.PROJECT_DEPT_NAME = #{orgnztNm}
+		order by A.PROJECT_ID DESC
+	</select>
+		
+	<!-- 팀장 달력 -> 팀원 업무 내용 조회 -->
+	<select id="selectTeamWorkList" parameterType="comDefaultVO" resultType="egovMap">
+		SELECT
+			SCHDUL_ID,
+			SCHDUL_NM,
+			SCHDUL_CN,
+			PROJECT_ID,
+			SCHDUL_BGNDE,
+			SCHDUL_ENDDE,
+			SCHDUL_CHARGER_ID
+		FROM SCHDUL
+		WHERE SCHDUL_DEPT_ID = #{orgnztNm}
+	</select>
+	
+	<!-- 프로젝트 수정 폼 -->
+	<select id="selectDeptSchdulManageDetailVO" resultType="EgovMap">
+		SELECT 
+		    PROJECT_ID,
+		    PROJECT_NM,
+		    PROJECT_DEPT_NAME,
+		    PROJECT_BGNDE,
+		    PROJECT_ENDDE,
+		    PROJECT_PER,
+		    PROJECT_CN
+		FROM PROJECT
+		WHERE PROJECT_ID = #{projectId}
+		LIMIT 1
+	</select>
+	
+	<!-- 프로젝트 수정 처리 -->
+	<update id="updateDeptSchdulManage">
+		UPDATE PROJECT
+		SET
+		    PROJECT_DEPT_NAME=#{projectDeptName},
+		    PROJECT_BGNDE=#{projectBgnde},
+		    PROJECT_ENDDE=#{projectEndde},
+		    PROJECT_NM=#{projectNm},
+		    PROJECT_CN=#{projectCn},
+		    PROJECT_PER=#{projectPer},
+		    LAST_UPDT_PNTTM = sysdate()
+		WHERE PROJECT_ID = #{projectId}
+	</update>
+	
+	<!-- 프로젝트 삭제 -->
+	<delete id="deleteDeptSchdulManage">
+		
+			DELETE FROM PROJECT
+			WHERE PROJECT_ID = #{projectId}
+		
+	</delete>
+	
+	<!-- 프로젝트 참여 인원 -->
+	<select id="selectMberList" parameterType="comDefaultVO" resultType="egovMap">
+		SELECT 
+			USER_NM 
+		FROM user_tbl 
+		WHERE orgnzt_nm = #{orgnztNm} 
+		AND OFCPS_NUM = '2';
+	</select>
+	
+	<!-- 팀원 일정 목록 보기 -->
+	<select id="selectUserWorkList" parameterType="comDefaultVO" resultType="egovMap">
+	    SELECT
+	    	SCHDUL_ID,
+	        SCHDUL_NM,
+	        SCHDUL_CN,
+	        PROJECT_ID,
+	        SCHDUL_CHARGER_ID,
+	        SCHDUL_DEPT_ID,
+	        PROJECT_ID,
+	        SCHDUL_BGNDE,
+	        SCHDUL_ENDDE
+	    FROM schdul
+	    WHERE SCHDUL_DEPT_ID = #{orgnztNm}
+	    AND SCHDUL_BGNDE = #{schdulBgnde}
+	</select>
+	
+</mapper>
