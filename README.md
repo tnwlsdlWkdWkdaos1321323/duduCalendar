@@ -16,3 +16,18 @@
 - front : HTML5, CSS3, Javascript, JSP, JQuery/Ajax
 - batabase : MariaDB
 - 개발 툴 : Eclipse(eGovFramework), HeidiSQL, Exerd ERD
+
+##기능
+---
+1. 로그인
+
+https://github.com/tnwlsdlWkdWkdaos1321323/duduCalendar/assets/141698169/636294fc-020c-4e95-ab46-7d8db3a91a6c
+
+2. 비밀번호 변경
+
+https://github.com/tnwlsdlWkdWkdaos1321323/duduCalendar/assets/141698169/73811363-04e1-4b9d-8310-e3c33d88cbb8
+
+3. 일일 업무 등록 및 프로젝트 등록
+
+https://github.com/tnwlsdlWkdWkdaos1321323/duduCalendar/assets/141698169/ffb00c45-4718-4164-942e-a2ff9b96b7a5
+
