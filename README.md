@@ -17,5 +17,5 @@
 - batabase : MariaDB
 - 개발 툴 : Eclipse(eGovFramework), HeidiSQL, Exerd ERD
 
-##시스템 기능
+##기능
 ---
